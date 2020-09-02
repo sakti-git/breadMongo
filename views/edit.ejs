@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <title>ADD-MONGO</title>
+</head>
+
+<body>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+
+    <form id="form-edit" method="POST" style="padding-inline: 50px;">
+        <div class="card">
+            <div class="card-header card text-white bg-dark mb-3">
+                <h3>- Edit Data -</h3>
+            </div>
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="col">
+                        <div class="form-check">
+                            <label class="form-check-label" for="id">
+                                ID
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-10">
+                        <div class="form-group">
+                            <input type="text" name="id" class="form-control" id="id" placeholder="Ketikkan id ...">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="form-check">
+                            <label class="form-check-label" for="string">
+                                String
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-10">
+                        <div class="form-group">
+                            <input type="text" name="string" class="form-control" id="string"
+                                placeholder="Masukkan nilai String ...">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="form-check">
+                            <label class="form-check-label" for="integer">
+                                Integer
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-10">
+                        <div class="form-group">
+                            <input type="text" name="integer" class="form-control" id="integer"
+                                placeholder="Masukkan nilai Integer ...">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="form-check">
+                            <label class="form-check-label" for="float">
+                                Float
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-10">
+                        <div class="form-group">
+                            <input type="text" name="float" class="form-control" id="float"
+                                placeholder="Masukkan nilai Float ...">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-2">
+                        <div class="form-check">
+                            <label class="form-check-label" for="date">
+                                Date
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <input type="date" name="date" class="form-control" id="date">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="form-check">
+                            <label class="form-check-label" for="boolean">
+                                Boolean
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-10">
+                        <div class="form-group">
+                            <select name="boolean" id="boolean" class="custom-select custom-select">
+                                <option selected>Choose the boolean ...</option>
+                                <option value="true">True</option>
+                                <option value="false">False</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Update</button>
+                <!-- <button type="submit" class="btn btn-warning"><a href="/">Back</a></button> -->
+            </div>
+        </div>
+    </form>
+
+</body>
+
+</html>

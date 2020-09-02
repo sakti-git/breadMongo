@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <title>BREAD-MONGO</title>
+</head>
+
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+
+  <form action="/" id="form-filter" method="GET" style="padding-inline: 50px;">
+    <input type="hidden" id="page" name="page" value="1">
+    <div class="card">
+      <div class="card-header card text-white bg-dark mb-3">
+        <h2>B.R.E.A.D (Browse, Read, Edit, Add, Delete)</h2>
+        <h3>Filter</h3>
+      </div>
+      <div class="card-body">
+
+        <div class="row">
+          <div class="col">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="true" id="cekId" name="checkId">
+              <label class="form-check-label" for="id">
+                ID
+              </label>
+            </div>
+          </div>
+          <div class="col-10">
+            <div class="form-group">
+              <input type="text" name="fil-id" class="form-control" id="fil-id" placeholder="Input ID ...">
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="true" id="cekName" name="checkName">
+              <label class="form-check-label" for="name">
+                Name
+              </label>
+            </div>
+          </div>
+          <div class="col-10">
+            <div class="form-group">
+              <input type="text" name="fil-name" class="form-control" id="fil-name" placeholder="Input Player Name ...">
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="true" id="cekAge" name="checkAge">
+              <label class="form-check-label" for="age">
+                Age
+              </label>
+            </div>
+          </div>
+          <div class="col-10">
+            <div class="form-group">
+              <input type="text" name="fil-age" class="form-control" id="fil-age" placeholder="Input Player Age ...">
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="true" id="cekWeight" name="checkWeight">
+              <label class="form-check-label" for="weight">
+                Weight
+              </label>
+            </div>
+          </div>
+          <div class="col-10">
+            <div class="form-group">
+              <input type="text" name="fil-weight" class="form-control" id="fil-weight"
+                placeholder="Input Player Weight">
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-2">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="true" id="cekBirth" name="checkBirth">
+              <label class="form-check-label" for="birth">
+                Birth
+              </label>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="form-group">
+              <input type="date" name="startDate" class="form-control" id="startDate">
+            </div>
+          </div>
+          <div class="w-100"></div>
+          <p class="col offset-2">to</p>
+          <div class="w-100"></div>
+          <div class="col-3 offset-2">
+            <div class="form-group">
+              <input type="date" name="endDate" class="form-control" id="endDate">
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="true" id="cekSquad" name="checkSquad">
+              <label class="form-check-label" for="squad">
+                Squad
+              </label>
+            </div>
+          </div>
+          <div class="col-10">
+            <div class="form-group">
+              <select name="fil-squad" id="fil-squad" class="custom-select custom-select">
+                <option selected>Squad ... ?</option>
+                <option value="true">True</option>
+                <option value="false">False</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">SEARCH</button></br>
+
+        <div class="container" style="padding-top: 20px;">
+
+          <table class="table table-hover table-info">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Age</th>
+                <th scope="col">Weight</th>
+                <th scope="col">Birth</th>
+                <th scope="col">Squad</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% result.forEach((item, index) => { %>
+              <tr scope="row">
+                <th scope="row"><%= index + 1 %></th>
+                <td><%= item.name %></td>
+                <td><%= item.age %></td>
+                <td><%= item.weight %></td>
+                <td><%= item.birth %></td>
+                <td><%= item.squad %></td>
+                <td>
+                  <button class="btn btn-success"> <a href="/edit/<%=item._id%>" style="color: white;"> EDIT
+                    </a></button>
+                  <button class="btn btn-danger"> <a href="/delete/<%= item._id%>" style="color: white;"> DELETE
+                    </a></button></td>
+                </td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+
+          <nav aria-label="Page navigation example">
+            <ul class="pagination">
+              <li class="page-item"><a class="page-link" href="/?page=<%= parseInt(page)-1%>">Previous</a></li>
+              <%for(let i = 1; i<= pages; i++){%>
+              <li class="page-item"><a class="page-link" href="/?page=<%= i %>"><%= i%></a></li>
+              <%}%>
+              <li class="page-item"><a class="page-link" href="/?page=<%= parseInt(page)-1%>">Next</a></li>
+            </ul>
+          </nav>
+          <br>
+          <a href="/add" <button class="btn btn-primary">ADD</button> </a>
+
+        </div>
+
+      </div>
+    </div>
+  </form>
+</body>
+
+</html>
