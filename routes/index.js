@@ -1,8 +1,9 @@
 var express = require('express');
-var router = express.Router();
 const {
   Router
 } = require('express');
+var router = express.Router();
+
 
 //require mongodb
 const objectId = require('mongodb').ObjectId;
@@ -22,16 +23,16 @@ module.exports = function (db, coll) {
       query.name = reg;
     }
     if (age) {
-      query.age = parseInt(age);
+      query.age = age;
     }
     if (weight) {
       query.weight = parseFloat(weight);
-    }
+    } 
     if (squad) {
-      query.squad = JSON.parse(squad);
+      query.squad = squad;
     }
     if (startDate && endDate) {
-      query.date = { $gte: startDate, $lte: endDate }
+      query.birth = { $gte: startDate, $lte: endDate }
     }
 
     const page = req.query.page || 1;
@@ -42,11 +43,10 @@ module.exports = function (db, coll) {
     //New Page by Pagination
     let url = req.url.includes('page') ? req.url : `/?page=1&` + req.url.slice(2)
 
-    //Use Promise
     db.collection(coll).count()
       .then((total) => {
         const pages = Math.ceil(total / limit)
-
+        console.log('ini query', query);
         db.collection(coll).find(query).limit(limit).skip(offset).toArray()
           .then((result) => {
 
@@ -69,14 +69,12 @@ module.exports = function (db, coll) {
   router.get('/add', (req, res) => res.status(200).render('add'))
 
   router.post('/add', (req, res) => {
-    let data = req.body
     let add = {
-      "_id": Number(data.add-id),
-      "name": data.add-name,
-      "age": Number(data.add-age),
-      "weight": parseFloat(data.add-weight),
-      "birth": data.add-birth,
-      "squad": JSON.parse(data.add-squad)
+      "name": req.body.addName,
+      "age": Number(req.body.addAge),
+      "weight": parseFloat(req.body.addWeight),
+      "birth": req.body.addBirth,
+      "squad": JSON.parse(req.body.addSquad)
     }
     db.collection(coll).insertOne(add, err => {
       if (err) res.json(err)
@@ -106,16 +104,15 @@ module.exports = function (db, coll) {
   })
 
   router.post('/edit/:id', (req, res) => {
-    let data = req.body
     db.collection(coll).updateOne({
       _id: objectId(req.params.id)
     }, {
       $set: {
-        name: data.name,
-        age: Number(data.age),
-        weight: parseFloat(data.weight),
-        birth: data.birth,
-        squad: JSON.parse(data.squad)
+        name: req.body.editName,
+        age: Number(req.body.editAge),
+        weight: parseFloat(req.body.editWeight),
+        birth: req.body.editBirth,
+        squad: JSON.parse(req.body.editSquad)
       }
     }, err => {
       if (err) res.json(err)

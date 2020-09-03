@@ -37,7 +37,7 @@
                     </div>
                     <div class="col-10">
                         <div class="form-group">
-                            <input type="text" name="id" class="form-control" id="id" placeholder="Ketikkan id ...">
+                            <input type="text" name="editId" class="form-control" id="editId" value="<%= row._id %>" disabled>
                         </div>
                     </div>
                 </div>
@@ -52,8 +52,8 @@
                     </div>
                     <div class="col-10">
                         <div class="form-group">
-                            <input type="text" name="string" class="form-control" id="string"
-                                placeholder="Masukkan nilai String ...">
+                            <input type="text" name="editName" class="form-control" id="editName"
+                            value="<%= row.name %>">
                         </div>
                     </div>
                 </div>
@@ -68,8 +68,8 @@
                     </div>
                     <div class="col-10">
                         <div class="form-group">
-                            <input type="text" name="integer" class="form-control" id="integer"
-                                placeholder="Masukkan nilai Integer ...">
+                            <input type="text" name="editAge" class="form-control" id="editAge"
+                            value="<%= row.age %>">
                         </div>
                     </div>
                 </div>
@@ -84,8 +84,8 @@
                     </div>
                     <div class="col-10">
                         <div class="form-group">
-                            <input type="text" name="float" class="form-control" id="float"
-                                placeholder="Masukkan nilai Float ...">
+                            <input type="text" name="editWeight" class="form-control" id="editWeight"
+                            value="<%= row.weight %>">
                         </div>
                     </div>
                 </div>
@@ -100,7 +100,7 @@
                     </div>
                     <div class="col-3">
                         <div class="form-group">
-                            <input type="date" name="date" class="form-control" id="date">
+                            <input type="date" name="editBirth" class="form-control" id="editBirth" value="<%= row.birth %>">
                         </div>
                     </div>
                 </div>
@@ -115,7 +115,7 @@
                     </div>
                     <div class="col-10">
                         <div class="form-group">
-                            <select name="boolean" id="boolean" class="custom-select custom-select">
+                            <select name="editSquad" id="editSquad" class="custom-select custom-select" value="<%= row.squad %>">
                                 <option selected>Choose the boolean ...</option>
                                 <option value="true">True</option>
                                 <option value="false">False</option>
@@ -123,8 +123,8 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Update</button>
-                <!-- <button type="submit" class="btn btn-warning"><a href="/">Back</a></button> -->
+                <button type="submit" class="btn btn-primary">UPDATE</button>
+                <a href="/" <button class="btn btn-warning">BACK</button> </a>
             </div>
         </div>
     </form>
